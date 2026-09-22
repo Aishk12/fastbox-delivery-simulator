@@ -1,7 +1,3 @@
-# fastbox-delivery-simulator
-Python-based logistics simulation that assigns packages to the nearest delivery agent, calculates delivery distances and efficiency, and generates a JSON report.
-
-
 # FastBox Delivery Simulator
 
 A Python-based logistics simulation that models package delivery across multiple warehouses and delivery agents.
@@ -10,25 +6,24 @@ A Python-based logistics simulation that models package delivery across multiple
 
 The FastBox Delivery Simulator assigns each package to the nearest delivery agent using Euclidean distance and simulates the delivery route from the agent's current location to the warehouse and then to the package destination.
 
-The program calculates:
+The program generates a report containing:
 
 * Packages delivered by each agent
 * Total distance travelled
 * Delivery efficiency
 * Most efficient agent
-* Final delivery report in JSON format
 
 ## Technologies Used
 
 * Python
 * JSON
-* Mathematical calculations
-* File handling
+* File Handling
+* Mathematical Calculations
 
 ## Key Python Concepts
 
 * JSON parsing
-* Dictionaries and lists
+* Lists and dictionaries
 * Functions
 * Loops
 * Conditional statements
@@ -36,12 +31,25 @@ The program calculates:
 * File handling
 * Data validation
 
+## How It Works
+
+1. Reads and parses the input JSON file.
+2. Extracts warehouse, agent, and package information.
+3. Calculates Euclidean distance between agents and warehouses.
+4. Assigns each package to the nearest agent.
+5. Simulates the delivery route:
+   `Agent → Warehouse → Destination`
+6. Calculates total distance travelled by each agent.
+7. Calculates delivery efficiency.
+8. Identifies the most efficient agent.
+9. Saves the final report as `report.json`.
+
 ## Project Structure
 
 ```text
 fastbox-delivery-simulator/
 │
-├── fastbox_simulator.py
+├── fastbox_simulator.ipynb
 ├── base_case.json
 ├── test_case_1.json
 ├── test_case_2.json
@@ -50,17 +58,6 @@ fastbox-delivery-simulator/
 ├── report.json
 └── README.md
 ```
-
-## How It Works
-
-1. Reads the input JSON file.
-2. Extracts warehouse, agent, and package information.
-3. Calculates the Euclidean distance between agents and warehouses.
-4. Assigns each package to the nearest agent.
-5. Simulates the delivery route.
-6. Calculates total distance and efficiency for each agent.
-7. Identifies the most efficient agent.
-8. Saves the final results to `report.json`.
 
 ## Example Output
 
@@ -87,9 +84,25 @@ fastbox-delivery-simulator/
 
 ## Testing
 
-The simulator was tested using multiple JSON input files with different warehouse, agent, and package configurations.
+The simulator was tested using the base dataset and 10 additional test cases with different warehouse, agent, and package configurations.
 
-## Learning Outcome
+The program successfully processed the test cases and generated delivery reports.
 
-This project helped me practice Python programming, JSON data handling, distance calculations, file operations, and implementing a real-world logistics simulation.
+## Assumptions
 
+* Each package is assigned to the nearest agent based on the agent's distance from the warehouse.
+* Euclidean distance is used for distance calculations.
+* If two agents are equally close, the agent with the smaller ID is selected.
+* Packages are processed in the order provided in the input JSON.
+* After delivering a package, the agent remains at that package's destination.
+* Efficiency is calculated as:
+
+```text
+Total Distance / Packages Delivered
+```
+
+* Lower distance per package represents better efficiency.
+
+## Learning Outcomes
+
+This project helped me strengthen my understanding of Python programming, JSON data handling, file operations, mathematical calculations, functions, loops, and implementing a real-world logistics simulation.
